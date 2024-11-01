@@ -7,7 +7,6 @@ export default function TopInfos() {
   const showFavorites = useSelector(
     (state: any) => state.favorites.showFavorites
   );
-  const character = useSelector((state: any) => state.character.character);
   const currentCharacterLength = useSelector(
     (state: any) => state.character.currentCharacterLength
   );

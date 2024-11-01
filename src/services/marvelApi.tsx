@@ -1,9 +1,8 @@
 import axios from 'axios';
 import md5 from 'md5';
-import config from '../../config';
 
-const publicKey = config.MARVEL_PUBLIC_KEY;
-const privateKey = config.MARVEL_PRIVATE_KEY;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+const privateKey = import.meta.env.VITE_PRIVATE_KEY;
 
 const generateHash = (timestamp: string | number) => {
   return md5(timestamp + privateKey + publicKey);
