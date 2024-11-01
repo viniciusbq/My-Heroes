@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 20vh;
+  height: 10vh;
   width: 74.8125rem;
 `;
 

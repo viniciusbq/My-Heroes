@@ -1,6 +1,6 @@
 import axios from 'axios';
 import md5 from 'md5';
-import config from '../config';
+import config from '../../config';
 
 const publicKey = config.MARVEL_PUBLIC_KEY;
 const privateKey = config.MARVEL_PRIVATE_KEY;
