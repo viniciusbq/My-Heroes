@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import {
-  Container,
-  Description,
-  HeroesCard,
-  HeroesImg,
-  HeroesTop,
-  Name,
-  PaginationContainer,
-  PaginationButton,
-} from './styles';
+import { Container, PaginationContainer, PaginationButton } from './styles';
 import { fetchMarvelCharacters } from '../../services/marvelApi';
-import { IoIosHeartEmpty } from 'react-icons/io';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading } from '../../store/loadingSlice';
+import { addFavorite, removeFavorite } from '../../store/favoriteSlice';
+import {
+  setCharacters,
+  setCurrentCharactersLength,
+} from '../../store/charactersSlice';
+import HeroeCard from './heroeCard';
 
-interface Character {
+export interface Character {
   id: number;
   name: string;
   description: string;
@@ -26,56 +24,71 @@ interface Character {
 const ITEMS_PER_PAGE = 8;
 
 export default function HeroesList() {
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState<Number | String | any>(1);
 
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: any) => state.favorites.favorites);
+  const showFavorites = useSelector(
+    (state: any) => state.favorites.showFavorites
+  );
+  const character = useSelector((state: any) => state.character.character);
+  const searchTerm = useSelector((state: any) => state.search.searchTerm);
+
   useEffect(() => {
     const fetchCharacters = async () => {
+      dispatch(setLoading(true));
+
       try {
         const data = await fetchMarvelCharacters();
-        setCharacters(data);
-        console.log(data);
+        dispatch(setCharacters(data));
       } catch (err) {
         setError('Erro ao carregar personagens.');
       } finally {
-        setLoading(false);
+        dispatch(setLoading(false));
       }
     };
 
     fetchCharacters();
   }, []);
 
-  if (loading) return <div>Carregando...</div>;
-  if (error) return <div>{error}</div>;
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
-  const totalPages = Math.ceil(characters.length / ITEMS_PER_PAGE);
+  const filteredCharacters = character.filter((char: Character) =>
+    char.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const displayCharacters = !showFavorites ? filteredCharacters : favorites;
 
+  const totalPages = Math.ceil(displayCharacters.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentCharacters = characters.slice(
+  const currentCharacters = displayCharacters.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
 
-  // Lógica para determinar quais números de página mostrar
+  useEffect(() => {
+    if (currentCharacters) {
+      dispatch(setCurrentCharactersLength(displayCharacters));
+    }
+  }, [currentCharacters, dispatch]);
+
   const getPaginationNumbers = () => {
     const numbers = [];
     const maxVisiblePages = 4;
 
     if (totalPages <= maxVisiblePages) {
-      // Se o total de páginas for menor ou igual a 4, exiba todas
       for (let i = 1; i <= totalPages; i++) {
         numbers.push(i);
       }
     } else {
-      // Exibir as primeiras 4 páginas e a última
       const startPage = Math.max(2, currentPage - 1);
       const endPage = Math.min(totalPages, startPage + 2);
 
       if (startPage > 1) {
         numbers.push(1);
-        if (startPage > 2) numbers.push('...'); // Adiciona '...' se não for consecutivo
+        if (startPage > 2) numbers.push('...');
       }
 
       for (let i = startPage; i <= endPage; i++) {
@@ -83,7 +96,7 @@ export default function HeroesList() {
       }
 
       if (endPage < totalPages) {
-        if (endPage < totalPages - 1) numbers.push('...'); // Adiciona '...' se não for consecutivo
+        if (endPage < totalPages - 1) numbers.push('...');
         numbers.push(totalPages);
       }
     }
@@ -93,21 +106,32 @@ export default function HeroesList() {
 
   const paginationNumbers = getPaginationNumbers();
 
+  const handleFavoriteClick = (character: Character) => {
+    const isFavorite = favorites.some(
+      (fav: { id: number }) => fav.id === character.id
+    );
+
+    if (isFavorite) {
+      dispatch(removeFavorite(character.id));
+    } else {
+      dispatch(addFavorite(character));
+    }
+  };
+
+  if (error) return <div>{error}</div>;
+
   return (
     <>
       <Container>
-        {currentCharacters.map((character) => (
-          <HeroesCard key={character.id}>
-            <HeroesImg
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <HeroesTop>
-              <Name>{character.name}</Name>
-              <IoIosHeartEmpty size={25} color="red" />
-            </HeroesTop>
-            <Description>{character.description}</Description>
-          </HeroesCard>
+        {currentCharacters.map((character: Character) => (
+          <HeroeCard
+            key={character.id}
+            character={character}
+            isFavorite={favorites.some(
+              (fav: { id: number }) => fav.id === character.id
+            )}
+            onFavoriteClick={() => handleFavoriteClick(character)}
+          />
         ))}
       </Container>
       <PaginationContainer>

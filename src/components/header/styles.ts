@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: flex-end;
   width: 100%;
-  height: 26.25rem;
+  height: 20.25rem;
 `;
 
 export const Content = styled.div`

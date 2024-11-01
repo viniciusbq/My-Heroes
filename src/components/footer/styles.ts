@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: 100%;
   height: 5.125rem;
   background-color: #202020;
+  bottom: 0px;
 `;
 
 export const DataText = styled.span`

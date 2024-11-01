@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+interface TagContainerProps {
+  activate?: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -15,15 +18,21 @@ export const CountHeroes = styled.span`
   color: #c5c5c5;
 `;
 
-export const TagContainer = styled.div`
+export const TagContainer = styled.div<TagContainerProps>`
   display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0px 5px;
   justify-content: center;
-  gap: 1em;
+  gap: 5px;
+  background-color: ${({ activate }) => (activate ? '#f43735b2' : '#fff')};
+  height: 3rem;
+  cursor: pointer;
 `;
 
-export const TagFavorite = styled.span`
+export const TagFavorite = styled.span<TagContainerProps>`
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 28.13px;
-  color: #f43735b2;
+  color: ${({ activate }) => (activate ? '#fff' : '#f43735b2')};
 `;
