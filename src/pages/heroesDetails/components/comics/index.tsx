@@ -15,7 +15,7 @@ import { setLoading } from '../../../../store/loadingSlice';
 import { useDispatch } from 'react-redux';
 
 interface IComicsDetailsProps {
-  comics: Comic[];
+  comics: Comic;
 }
 
 export default function ComicsDetails({ comics }: IComicsDetailsProps) {
@@ -31,7 +31,7 @@ export default function ComicsDetails({ comics }: IComicsDetailsProps) {
       dispatch(setLoading(true));
 
       try {
-        const data = await fetchMarvelComics(comics?.collectionURI);
+        const data = await fetchMarvelComics(comics?.collectionURI as string);
         setHq(data);
         console.log('dada', data);
       } catch (error) {

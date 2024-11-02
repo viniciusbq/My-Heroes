@@ -7,6 +7,7 @@ export interface Comic {
   comics?: any;
   description?: string;
   resourceURI?: string;
+  collectionURI?: string;
   thumbnail?: {
     path: string;
     extension: string;
@@ -18,7 +19,7 @@ export interface Items {
   description: string;
   images: any;
   title: string;
-  modified: string | number | Date;
+  modified: string;
   id: number | null;
   name: string;
   resourceURI?: string;
@@ -58,7 +59,7 @@ const characterSlice = createSlice({
     setCharacters(state, action: PayloadAction<Character[]>) {
       state.character = action.payload;
     },
-    setCurrentCharactersLength(state, action: PayloadAction<Character[]>) {
+    setCurrentCharactersLength(state, action: PayloadAction<number | any>) {
       state.currentCharacterLength = action.payload.length;
     },
     setSelectedCharacter(state, action: PayloadAction<any>) {
