@@ -6,21 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../../store/loadingSlice';
 import { addFavorite, removeFavorite } from '../../store/favoriteSlice';
 import {
+  Character,
   setCharacters,
   setCurrentCharactersLength,
 } from '../../store/charactersSlice';
 import HeroeCard from './heroeCard';
 import { RootState } from '../../store';
-
-export interface Character {
-  id: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
-}
 
 const ITEMS_PER_PAGE = 8;
 
@@ -142,9 +133,7 @@ export default function HeroesList() {
       <PaginationContainer>
         <PaginationButton
           onClick={() =>
-            setCurrentPage((prev: Number | String | bigint | any) =>
-              Math.max(prev - 1, 1)
-            )
+            setCurrentPage((prev: Number) => Math.max(Number(prev) - 1, 1))
           }
           disabled={currentPage === 1}
         >
@@ -175,8 +164,8 @@ export default function HeroesList() {
 
         <PaginationButton
           onClick={() =>
-            setCurrentPage((prev: Number | String | bigint | any) =>
-              Math.min(prev + 1, totalPages)
+            setCurrentPage((prev: Number) =>
+              Math.min(Number(prev) + 1, totalPages)
             )
           }
           disabled={currentPage === totalPages}

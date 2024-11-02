@@ -8,10 +8,12 @@ import {
   FavContainter,
   Description,
 } from './styles';
-import { Character } from '..';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setSelectedCharacter } from '../../../store/charactersSlice';
+import {
+  Character,
+  setSelectedCharacter,
+} from '../../../store/charactersSlice';
 
 interface IHeroeCardPros {
   character: Character;

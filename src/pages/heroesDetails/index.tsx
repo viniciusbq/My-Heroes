@@ -24,7 +24,7 @@ export default function HeroesDetails() {
         <Title>DESCUBRA TODOS OS QUADRINHOS DESTE PERSONAGEM</Title>
       </TitleContainer>
       <HeroeDeitalCard heroe={character} />
-      <ComicsDetails comics={character?.comics} />
+      <ComicsDetails comics={character?.comics} items={[]} id={0} title={''} />
     </Container>
   );
 }

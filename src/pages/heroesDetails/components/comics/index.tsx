@@ -14,35 +14,25 @@ import { format, isValid, parseISO } from 'date-fns';
 import { setLoading } from '../../../../store/loadingSlice';
 import { useDispatch } from 'react-redux';
 
-interface IComicsDetailsProps {
-  comics: Comic;
-}
-
-export default function ComicsDetails({ comics }: IComicsDetailsProps) {
+export default function ComicsDetails({ comics }: Comic) {
   const [hq, setHq] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('Comics Details', comics);
-  }, [comics]);
-
-  useEffect(() => {
     const fetchComics = async () => {
       dispatch(setLoading(true));
-
       try {
         const data = await fetchMarvelComics(comics?.collectionURI as string);
         setHq(data);
-        console.log('dada', data);
       } catch (error) {
         console.error('Erro ao buscar os quadrinhos:', error);
       } finally {
         dispatch(setLoading(false));
       }
     };
-
     fetchComics();
   }, []);
+
   return (
     <>
       {hq?.slice(0, 5)?.map((comic: Items, index) => (
