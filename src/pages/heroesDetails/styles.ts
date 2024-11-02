@@ -12,12 +12,14 @@ export const BackButton = styled.button`
   width: 3rem;
   background-color: rgba(255, 255, 255, 0.8);
   border: none;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   position: fixed;
   top: 20px;
   left: 20px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 11;
   &:hover {
     background-color: rgba(255, 255, 255, 1);
   }
