@@ -32,3 +32,24 @@ export const fetchMarvelCharacters = async () => {
     throw error;
   }
 };
+export const fetchMarvelComics = async (resourceURI: string) => {
+  const timestamp = new Date().getTime();
+  const hash = generateHash(timestamp);
+
+  try {
+    const response = await axios.get(resourceURI.toString(), {
+      params: {
+        ts: timestamp,
+        apikey: publicKey,
+        hash: hash,
+        limit: 100,
+        offset: 0,
+      },
+    });
+
+    return response.data.data.results;
+  } catch (error) {
+    console.error('Erro ao buscar personagens:', error);
+    throw error;
+  }
+};

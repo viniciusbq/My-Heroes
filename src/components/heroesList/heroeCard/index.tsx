@@ -9,6 +9,9 @@ import {
   Description,
 } from './styles';
 import { Character } from '..';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setSelectedCharacter } from '../../../store/charactersSlice';
 
 interface IHeroeCardPros {
   character: Character;
@@ -21,15 +24,32 @@ export default function HeroeCard({
   isFavorite,
   onFavoriteClick,
 }: IHeroeCardPros) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleCardClick = () => {
+    dispatch(setSelectedCharacter(character));
+    navigate(`/details/${character.id}`);
+  };
+
+  const handleFavoriteClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onFavoriteClick();
+  };
+
   return (
-    <HeroesCard key={character.id}>
+    <HeroesCard
+      onClick={handleCardClick}
+      activate={isFavorite ? 'true' : 'false'}
+      key={character.id}
+    >
       <HeroesImg
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
         alt={character.name}
       />
       <HeroesTop>
         <Name>{character.name}</Name>
-        <FavContainter onClick={onFavoriteClick}>
+        <FavContainter onClick={handleFavoriteClick}>
           {isFavorite ? (
             <FaHeart size={25} color="red" />
           ) : (

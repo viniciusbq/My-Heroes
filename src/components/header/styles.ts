@@ -5,7 +5,6 @@ export const Container = styled.div`
   position: relative;
   justify-content: space-around;
   align-items: flex-end;
-  width: 100%;
   height: 20.25rem;
 `;
 
@@ -13,7 +12,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 74.8125rem;
   height: 14.875rem;
 `;
 
@@ -29,5 +27,10 @@ export const Subtitle = styled.h3`
   font-weight: 500;
   line-height: 1.7581rem;
   text-align: center;
-  color: #000;
+  color: #21212199;
+  @media (max-width: 615px) {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+  }
 `;

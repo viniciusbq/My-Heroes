@@ -2,13 +2,14 @@ import { Container, CountHeroes, TagContainer, TagFavorite } from './styles';
 import { FaHeart } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowFavorites } from '../../store/favoriteSlice';
+import { RootState } from '../../store';
 
 export default function TopInfos() {
   const showFavorites = useSelector(
-    (state: any) => state.favorites.showFavorites
+    (state: RootState) => state.favorites.showFavorites
   );
   const currentCharacterLength = useSelector(
-    (state: any) => state.character.currentCharacterLength
+    (state: RootState) => state.character.currentCharacterLength
   );
 
   const dispatch = useDispatch();
@@ -23,12 +24,17 @@ export default function TopInfos() {
         {currentCharacterLength}
         {currentCharacterLength > 1 ? ' heróis' : ' herói'}
       </CountHeroes>
-      <TagContainer activate={showFavorites} onClick={handleClick}>
+      <TagContainer
+        activate={showFavorites ? 'true' : 'false'}
+        onClick={handleClick}
+      >
         <FaHeart
           size={'1.5rem'}
           color={!showFavorites ? ' #f43735b2' : '#fff'}
         />
-        <TagFavorite activate={showFavorites}>Somente favoritos</TagFavorite>
+        <TagFavorite activate={showFavorites ? 'true' : 'false'}>
+          Somente favoritos
+        </TagFavorite>
       </TagContainer>
     </Container>
   );

@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: space-between;
-  width: 74.8125rem;
-  gap: 16px;
-`;
+interface TagContainerProps {
+  activate?: string;
+}
 
-export const HeroesCard = styled.div`
+export const HeroesCard = styled.div<TagContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,9 +14,15 @@ export const HeroesCard = styled.div`
   border-radius: 10px;
   cursor: pointer;
 
+  background: ${({ activate }) =>
+    activate == 'true'
+      ? 'linear-gradient(45deg, #FFD700, #FFEA00, #B8860B)'
+      : '#fff'};
+
   &:hover {
     transform: scale(1.02);
-    background-color: #c6c6c6;
+    background-color: ${({ activate }) =>
+      activate == 'true' ? 'red' : '#c6c6c6'};
   }
 `;
 export const HeroesImg = styled.img`

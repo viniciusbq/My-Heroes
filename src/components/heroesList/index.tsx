@@ -10,6 +10,7 @@ import {
   setCurrentCharactersLength,
 } from '../../store/charactersSlice';
 import HeroeCard from './heroeCard';
+import { RootState } from '../../store';
 
 export interface Character {
   id: number;
@@ -28,12 +29,16 @@ export default function HeroesList() {
   const [currentPage, setCurrentPage] = useState<Number | String | any>(1);
 
   const dispatch = useDispatch();
-  const favorites = useSelector((state: any) => state.favorites.favorites);
-  const showFavorites = useSelector(
-    (state: any) => state.favorites.showFavorites
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favorites
   );
-  const character = useSelector((state: any) => state.character.character);
-  const searchTerm = useSelector((state: any) => state.search.searchTerm);
+  const showFavorites = useSelector(
+    (state: RootState) => state.favorites.showFavorites
+  );
+  const character = useSelector(
+    (state: RootState) => state.character.character
+  );
+  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
 
   useEffect(() => {
     const fetchCharacters = async () => {
