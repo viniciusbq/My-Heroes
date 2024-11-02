@@ -1,8 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-
-interface TagContainerProps {
-  activate?: string;
-}
+import { TagContainerProps } from '../../../types';
 
 const pulseAnimation = keyframes`
   0% {

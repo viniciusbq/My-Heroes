@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 
 export const BackButton = styled.button`
+  display: flex;
   height: 3rem;
   width: 3rem;
   background-color: rgba(255, 255, 255, 0.8);

@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Character } from './charactersSlice';
-
-interface FavoritesState {
-  favorites: Character[];
-  showFavorites: boolean;
-}
+import { Character, FavoritesState } from '../types';
 
 const initialState: FavoritesState = {
   favorites: [],

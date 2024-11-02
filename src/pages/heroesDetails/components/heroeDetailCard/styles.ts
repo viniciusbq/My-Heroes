@@ -13,7 +13,6 @@ export const Container = styled.div`
   transition: transform 0.6s, box-shadow 0.6s;
   flex-wrap: wrap;
   padding: 10px 0px;
-  width: 60%;
 
   @media (max-width: 1070px) {
     height: auto;

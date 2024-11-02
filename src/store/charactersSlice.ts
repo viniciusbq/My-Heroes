@@ -1,52 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Character, CharacterState } from '../types';
 
-export interface Comic {
-  items: Items[];
-  id: number;
-  title: string;
-  comics?: any;
-  description?: string;
-  resourceURI?: string;
-  collectionURI?: string;
-  thumbnail?: {
-    path: string;
-    extension: string;
-  };
-}
-
-export interface Items {
-  pageCount: number;
-  description: string;
-  images: any;
-  title: string;
-  modified: string;
-  id: number | null;
-  name: string;
-  resourceURI?: string;
-}
-
-export interface Character {
-  id: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
-  comics: {
-    available: number;
-    collectionURI: string;
-    items: Comic[];
-  };
-}
-
-interface characterState {
-  character: Character[];
-  currentCharacterLength: number;
-  selectedCharacter: Character | null;
-}
-
-const initialState: characterState = {
+const initialState: CharacterState = {
   character: [],
   currentCharacterLength: 0,
   selectedCharacter: null,

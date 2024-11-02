@@ -1,4 +1,4 @@
-import { Character } from '../../../../store/charactersSlice';
+import { IHeroeDetailCardProps } from '../../../../types';
 import { truncateDescription } from '../../../../utils/trunkDescription';
 import {
   Container,
@@ -8,11 +8,7 @@ import {
   Name,
 } from './styles';
 
-interface IHeroeDeitalCardProps {
-  heroe: Character | null;
-}
-
-export default function HeroeDeitalCard({ heroe }: IHeroeDeitalCardProps) {
+export default function HeroeDeitalCard({ heroe }: IHeroeDetailCardProps) {
   return (
     <Container>
       <Thumb

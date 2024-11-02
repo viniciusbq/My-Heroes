@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-interface TagContainerProps {
-  activate?: string;
-}
+import { TagContainerProps } from '../../types';
 
 export const Container = styled.div`
   display: flex;

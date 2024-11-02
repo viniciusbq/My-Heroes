@@ -10,22 +10,14 @@ import {
 } from './styles';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  Character,
-  setSelectedCharacter,
-} from '../../../store/charactersSlice';
-
-interface IHeroeCardPros {
-  character: Character;
-  isFavorite: boolean;
-  onFavoriteClick: () => void;
-}
+import { setSelectedCharacter } from '../../../store/charactersSlice';
+import { IHeroeCardProps } from '../../../types';
 
 export default function HeroeCard({
   character,
   isFavorite,
   onFavoriteClick,
-}: IHeroeCardPros) {
+}: IHeroeCardProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
