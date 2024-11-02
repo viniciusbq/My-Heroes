@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Character } from '../../../../store/charactersSlice';
 import {
   Container,
   Description,
@@ -6,7 +6,6 @@ import {
   Thumb,
   Name,
 } from './styles';
-import { Character } from '../../../../components/heroesList';
 
 interface IHeroeDeitalCardProps {
   heroe: Character | null;
