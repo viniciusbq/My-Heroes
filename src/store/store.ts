@@ -5,12 +5,18 @@ import characterReducer from './charactersSlice';
 import searchReducer from './searchSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+import { createLogger } from 'redux-logger'; // Import logger middleware
+
 const persistConfig = {
-  key: 'favorites',
+  key: 'root',
   storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, favoriteReducer);
+
+const logger = createLogger({
+  collapsed: true,
+});
 
 const store = configureStore({
   reducer: {
@@ -19,9 +25,12 @@ const store = configureStore({
     character: characterReducer,
     search: searchReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger), // Add the logger middleware to the default middleware
 });
+
 const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
 export { store, persistor };

@@ -11,7 +11,7 @@ import {
   setCurrentCharactersLength,
 } from '../../store/charactersSlice';
 import HeroeCard from './heroeCard';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 const ITEMS_PER_PAGE = 8;
 

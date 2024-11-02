@@ -7,27 +7,35 @@ export const Container = styled.div`
   min-height: 100vh;
 `;
 
+export const BackButton = styled.button`
+  height: 3rem;
+  width: 3rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1;
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+`;
+
 export const ImgBackground = styled.img`
-  width: 100%;
   height: auto;
+  width: 100vw;
   position: absolute;
   z-index: -1;
 `;
 
-export const ShadowOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-`;
-
 export const TitleContainer = styled.div`
-  width: 100%; /* Mudou para 100% para responsividade */
-  max-width: 73.125rem; /* Limite máximo para telas grandes */
-  padding: 0 2rem; /* Adiciona espaçamento nas laterais em telas menores */
+  width: 100%;
+  max-width: 73.125rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.h1`
@@ -42,16 +50,21 @@ export const Title = styled.h1`
   align-self: start;
   color: #fff;
 
-  @media (max-width: 768px) {
-    font-size: 2.5rem; /* Reduz o tamanho da fonte em telas menores */
-    line-height: 40px; /* Ajusta o espaçamento de linha */
-    top: 5rem; /* Reduz a distância do topo em telas menores */
-    text-align: center; /* Centraliza o texto em telas menores */
-    left: 0; /* Remove a margem esquerda */
+  @media (max-width: 1070px) {
+    font-size: 3rem;
+    line-height: 40px;
+    top: 7rem;
+    text-align: center;
+    max-width: 80vw;
   }
 
-  @media (max-width: 480px) {
-    font-size: 2rem; /* Reduz ainda mais em telas muito pequenas */
-    line-height: 32px; /* Ajusta o espaçamento de linha */
+  @media (max-width: 517px) {
+    font-size: 2.5rem;
+    line-height: 32px;
+  }
+
+  @media (max-width: 432px) {
+    top: 5rem;
+    font-size: 1.5rem;
   }
 `;

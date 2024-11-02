@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { Container, LoadContainer } from './styles';
 import { Atom } from 'react-loading-indicators';
 import { useEffect } from 'react';

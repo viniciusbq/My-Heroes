@@ -7,6 +7,7 @@ import {
   Name,
   Date,
   DateCountDiv,
+  ContWrapper,
 } from './styles';
 import { Comic, Items } from '../../../../store/charactersSlice';
 import { fetchMarvelComics } from '../../../../services/marvelApi';
@@ -31,11 +32,10 @@ export default function ComicsDetails({ comics }: Comic) {
       }
     };
     fetchComics();
-    console.log(comics?.collectionURI);
   }, []);
 
   return (
-    <>
+    <ContWrapper>
       {hq?.slice(0, 5)?.map((comic: Items, index) => (
         <Container key={comic.id}>
           <ImgBackground
@@ -59,7 +59,7 @@ export default function ComicsDetails({ comics }: Comic) {
                 ? comic.description.length > 200
                   ? `${comic.description.slice(0, 200)}...`
                   : comic.description
-                : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium...'.slice(
+                : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.'.slice(
                     0,
                     200
                   )}
@@ -67,6 +67,6 @@ export default function ComicsDetails({ comics }: Comic) {
           </DetailsContainer>
         </Container>
       ))}
-    </>
+    </ContWrapper>
   );
 }

@@ -4,10 +4,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
   height: 5.125rem;
   background-color: #202020;
   position: relative;
+  flex-wrap: wrap;
 `;
 
 export const DataText = styled.span`
@@ -15,6 +15,10 @@ export const DataText = styled.span`
   line-height: 23.44px;
   text-align: left;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 32px;
+  }
 `;
 export const NameText = styled.span`
   color: #999999;

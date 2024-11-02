@@ -1,4 +1,5 @@
 import { Character } from '../../../../store/charactersSlice';
+import { truncateDescription } from '../../../../utils/trunkDescription';
 import {
   Container,
   Description,
@@ -20,7 +21,11 @@ export default function HeroeDeitalCard({ heroe }: IHeroeDeitalCardProps) {
       />
       <DetailsContainer>
         <Name>{heroe?.name}</Name>
-        <Description>{heroe?.description}</Description>
+        <Description>
+          {heroe?.description
+            ? truncateDescription(heroe?.description as string)
+            : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.'}
+        </Description>
       </DetailsContainer>
     </Container>
   );
