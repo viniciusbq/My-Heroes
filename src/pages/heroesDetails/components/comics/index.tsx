@@ -31,6 +31,7 @@ export default function ComicsDetails({ comics }: Comic) {
       }
     };
     fetchComics();
+    console.log(comics?.collectionURI);
   }, []);
 
   return (

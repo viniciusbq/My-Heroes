@@ -35,9 +35,10 @@ export const fetchMarvelCharacters = async () => {
 export const fetchMarvelComics = async (resourceURI: string) => {
   const timestamp = new Date().getTime();
   const hash = generateHash(timestamp);
+  const secureResourceURI = resourceURI.toString().replace(/^http:/, 'https:');
 
   try {
-    const response = await axios.get(resourceURI.toString(), {
+    const response = await axios.get(secureResourceURI, {
       params: {
         ts: timestamp,
         apikey: publicKey,
