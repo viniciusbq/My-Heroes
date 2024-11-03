@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import { Container, PaginationContainer, PaginationButton } from './styles';
+import {
+  Container,
+  PaginationContainer,
+  PaginationButton,
+  NoCharacter,
+} from './styles';
 import { fetchMarvelCharacters } from '../../../services/marvelApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../../../store/loadingSlice';
@@ -43,7 +48,7 @@ export default function HeroesList() {
         const data = await fetchMarvelCharacters();
         dispatch(setCharacters(data));
       } catch (err) {
-        setError('Erro ao carregar personagens.');
+        setError('Erro ao carregar personagens. Atualize a página');
       } finally {
         dispatch(setLoading(false));
       }
@@ -120,63 +125,73 @@ export default function HeroesList() {
 
   return (
     <>
-      <Container>
-        {currentCharacters.map((character: Character) => (
-          <HeroeCard
-            key={character.id}
-            character={character}
-            isFavorite={favorites.some(
-              (fav: { id: number }) => fav.id === character.id
-            )}
-            onFavoriteClick={() => handleFavoriteClick(character)}
-          />
-        ))}
-      </Container>
-      <PaginationContainer>
-        <PaginationButton
-          onClick={() => dispatch(setCurrentPage(Math.max(currentPage - 1, 1)))}
-          disabled={currentPage === 1}
-        >
-          <FaAngleLeft />
-        </PaginationButton>
+      {currentCharacters.length > 0 ? (
+        <>
+          <Container>
+            {currentCharacters.map((character: Character) => (
+              <HeroeCard
+                key={character.id}
+                character={character}
+                isFavorite={favorites.some(
+                  (fav: { id: number }) => fav.id === character.id
+                )}
+                onFavoriteClick={() => handleFavoriteClick(character)}
+              />
+            ))}
+          </Container>
+          <PaginationContainer>
+            <PaginationButton
+              onClick={() =>
+                dispatch(setCurrentPage(Math.max(currentPage - 1, 1)))
+              }
+              disabled={currentPage === 1}
+            >
+              <FaAngleLeft />
+            </PaginationButton>
 
-        {paginationNumbers.map((page, index) => (
-          <PaginationButton
-            key={index}
-            onClick={() =>
-              typeof page === 'number' && dispatch(setCurrentPage(page))
-            }
-            disabled={currentPage === page || page === '...'}
-            style={{
-              backgroundColor: '#fff',
-              color: '#000',
-              border:
-                currentPage === page && page.toString() !== '...'
-                  ? '1px solid #ff0000'
-                  : page === '...'
-                  ? 'none'
-                  : '1px solid #ffffff',
-              boxShadow:
-                currentPage === page && page.toString() !== '...'
-                  ? '1px 1px 5px rgba(255, 255, 255, 0.5)'
-                  : page === '...'
-                  ? 'none'
-                  : '1px 1px 5px rgba(0, 0, 0, 0.5)',
-            }}
-          >
-            {page}
-          </PaginationButton>
-        ))}
+            {paginationNumbers.map((page, index) => (
+              <PaginationButton
+                key={index}
+                onClick={() =>
+                  typeof page === 'number' && dispatch(setCurrentPage(page))
+                }
+                disabled={currentPage === page || page === '...'}
+                style={{
+                  backgroundColor: '#fff',
+                  color: '#000',
+                  border:
+                    currentPage === page && page.toString() !== '...'
+                      ? '1px solid #ff0000'
+                      : page === '...'
+                      ? 'none'
+                      : '1px solid #ffffff',
+                  boxShadow:
+                    currentPage === page && page.toString() !== '...'
+                      ? '1px 1px 5px rgba(255, 255, 255, 0.5)'
+                      : page === '...'
+                      ? 'none'
+                      : '1px 1px 5px rgba(0, 0, 0, 0.5)',
+                }}
+              >
+                {page}
+              </PaginationButton>
+            ))}
 
-        <PaginationButton
-          onClick={() =>
-            dispatch(setCurrentPage(Math.min(currentPage + 1, totalPages)))
-          }
-          disabled={currentPage === totalPages}
-        >
-          <FaAngleRight />
-        </PaginationButton>
-      </PaginationContainer>
+            <PaginationButton
+              onClick={() =>
+                dispatch(setCurrentPage(Math.min(currentPage + 1, totalPages)))
+              }
+              disabled={currentPage === totalPages}
+            >
+              <FaAngleRight />
+            </PaginationButton>
+          </PaginationContainer>
+        </>
+      ) : (
+        <>
+          <NoCharacter>Nenhum personagem encontrado.</NoCharacter>
+        </>
+      )}
     </>
   );
 }

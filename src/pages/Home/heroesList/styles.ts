@@ -117,3 +117,13 @@ export const PaginationButton = styled.button`
     height: 1.75rem;
   }
 `;
+
+export const NoCharacter = styled.span`
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 18.75px;
+  color: #f43735b2;
+  width: fit-content;
+  text-align: center;
+  height: 8rem;
+`;

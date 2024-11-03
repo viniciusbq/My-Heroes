@@ -1,18 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import { TagContainerProps } from '../../../../types';
 
-const pulseAnimation = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
 export const HeroesCard = styled.div<TagContainerProps>`
   display: flex;
   flex-direction: column;
@@ -22,21 +10,11 @@ export const HeroesCard = styled.div<TagContainerProps>`
   border: 1px solid #c6c6c6;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: ${({ activate }) =>
-    activate === 'true'
-      ? '0 0 20px #1FAB89, 0 0 40px rgba(255, 215, 0, 0.5)'
-      : 'none'};
 
   background: ${({ activate }) =>
     activate == 'true'
       ? 'linear-gradient(135deg, #1FAB89, #c0c0c0, #D7FBE8);'
       : '#fff'};
-
-  ${({ activate }) =>
-    activate === 'true' &&
-    css`
-      animation: ${pulseAnimation} 1s infinite;
-    `}
 
   &:hover {
     transform: scale(1.02);

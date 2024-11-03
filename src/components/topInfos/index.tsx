@@ -18,7 +18,6 @@ export default function TopInfos() {
     dispatch(setShowFavorites(!showFavorites));
     dispatch(setCurrentPage(1));
   };
-
   return (
     <Container>
       <CountHeroes>
@@ -26,20 +25,18 @@ export default function TopInfos() {
         {currentCharacterLength}
         {currentCharacterLength > 1 ? ' heróis' : ' herói'}
       </CountHeroes>
-      {currentCharacterLength > 0 && (
-        <TagContainer
-          activate={showFavorites ? 'true' : 'false'}
-          onClick={handleClick}
-        >
-          <FaHeart
-            size={'1.5rem'}
-            color={!showFavorites ? ' #f43735b2' : '#fff'}
-          />
-          <TagFavorite activate={showFavorites ? 'true' : 'false'}>
-            Somente favoritos
-          </TagFavorite>
-        </TagContainer>
-      )}
+      <TagContainer
+        activate={showFavorites ? 'true' : 'false'}
+        onClick={handleClick}
+      >
+        <FaHeart
+          size={'1.5rem'}
+          color={!showFavorites ? ' #f43735b2' : '#fff'}
+        />
+        <TagFavorite activate={showFavorites ? 'true' : 'false'}>
+          Somente favoritos
+        </TagFavorite>
+      </TagContainer>
     </Container>
   );
 }
