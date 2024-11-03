@@ -143,18 +143,22 @@ export default function HeroesList() {
         {paginationNumbers.map((page, index) => (
           <PaginationButton
             key={index}
-            onClick={() => setCurrentPage(page)}
-            disabled={currentPage === page}
+            onClick={() => typeof page === 'number' && setCurrentPage(page)}
+            disabled={currentPage === page || page === '...'}
             style={{
               backgroundColor: '#fff',
               color: '#000',
               border:
-                currentPage === page
+                currentPage === page && page !== '...'
                   ? '1px solid #ff0000'
+                  : page === '...'
+                  ? 'none'
                   : '1px solid #ffffff',
               boxShadow:
-                currentPage === page
+                currentPage === page && page !== '...'
                   ? '1px 1px 5px rgba(255, 255, 255, 0.5)'
+                  : page === '...'
+                  ? 'none'
                   : '1px 1px 5px rgba(0, 0, 0, 0.5)',
             }}
           >

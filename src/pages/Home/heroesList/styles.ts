@@ -89,7 +89,7 @@ export const PaginationContainer = styled.div`
   display: flex;
   margin: 20px;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-start;
 
   @media (max-width: 600px) {

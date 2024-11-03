@@ -27,3 +27,10 @@ dist-ssr
 # Ignorar arquivo de configuração
 config.ts
 .env
+
+# Arquivos de dependências geradas automaticamente
+package-lock.json
+yarn.lock
+
+# Persistência do Redux
+persist/
