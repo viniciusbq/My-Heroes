@@ -11,10 +11,11 @@ export const Container = styled.div`
   box-shadow: 10px 20px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
   transition: transform 0.6s, box-shadow 0.6s;
-  flex-wrap: wrap;
   padding: 10px 0px;
+  width: 60%;
 
   @media (max-width: 1070px) {
+    flex-wrap: wrap;
     height: auto;
   }
   @media (max-width: 500px) {

@@ -11,8 +11,16 @@ const persistConfig = {
   key: 'root',
   storage,
 };
+const characterPersistConfig = {
+  key: 'character',
+  storage,
+};
 
 const persistedReducer = persistReducer(persistConfig, favoriteReducer);
+const persistedCharacterReducer = persistReducer(
+  characterPersistConfig,
+  characterReducer
+);
 
 const logger = createLogger({
   collapsed: true,
@@ -22,7 +30,7 @@ const store = configureStore({
   reducer: {
     loading: loadingReducer,
     favorites: persistedReducer,
-    character: characterReducer,
+    character: persistedCharacterReducer,
     search: searchReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
