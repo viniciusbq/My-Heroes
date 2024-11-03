@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { Container, PaginationContainer, PaginationButton } from './styles';
-import { fetchMarvelCharacters } from '../../services/marvelApi';
+import { fetchMarvelCharacters } from '../../../services/marvelApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoading } from '../../store/loadingSlice';
-import { addFavorite, removeFavorite } from '../../store/favoriteSlice';
+import { setLoading } from '../../../store/loadingSlice';
+import { addFavorite, removeFavorite } from '../../../store/favoriteSlice';
 import {
-  Character,
   setCharacters,
   setCurrentCharactersLength,
-} from '../../store/charactersSlice';
+} from '../../../store/charactersSlice';
 import HeroeCard from './heroeCard';
-import { RootState } from '../../store/store';
+import { RootState } from '../../../store/store';
+import { Character } from '../../../types';
 
 const ITEMS_PER_PAGE = 8;
 

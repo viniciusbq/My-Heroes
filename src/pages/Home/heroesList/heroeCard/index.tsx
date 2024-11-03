@@ -10,8 +10,8 @@ import {
 } from './styles';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setSelectedCharacter } from '../../../store/charactersSlice';
-import { IHeroeCardProps } from '../../../types';
+import { setSelectedCharacter } from '../../../../store/charactersSlice';
+import { IHeroeCardProps } from '../../../../types';
 
 export default function HeroeCard({
   character,

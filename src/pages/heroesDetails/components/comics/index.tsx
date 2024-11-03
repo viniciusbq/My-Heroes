@@ -9,11 +9,11 @@ import {
   DateCountDiv,
   ContWrapper,
 } from './styles';
-import { Comic, Items } from '../../../../store/charactersSlice';
 import { fetchMarvelComics } from '../../../../services/marvelApi';
 import { format, isValid, parseISO } from 'date-fns';
 import { setLoading } from '../../../../store/loadingSlice';
 import { useDispatch } from 'react-redux';
+import { Comic, Items } from '../../../../types';
 
 export default function ComicsDetails({ comics }: Comic) {
   const [hq, setHq] = useState([]);

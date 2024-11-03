@@ -5,7 +5,7 @@ import characterReducer from './charactersSlice';
 import searchReducer from './searchSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
-import { createLogger } from 'redux-logger'; // Import logger middleware
+import { createLogger } from 'redux-logger';
 
 const persistConfig = {
   key: 'root',
@@ -25,7 +25,7 @@ const store = configureStore({
     character: characterReducer,
     search: searchReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger), // Add the logger middleware to the default middleware
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 const persistor = persistStore(store);

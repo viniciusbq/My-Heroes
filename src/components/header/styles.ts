@@ -6,6 +6,9 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: flex-end;
   height: 20.25rem;
+  @media (max-width: 360px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Content = styled.div`

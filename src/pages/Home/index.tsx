@@ -1,7 +1,7 @@
 import { Container } from './styles';
 import Header from '../../components/header';
 import TopInfos from '../../components/topInfos';
-import HeroesList from '../../components/heroesList';
+import HeroesList from './heroesList';
 
 export default function Home() {
   return (
