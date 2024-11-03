@@ -3,6 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowFavorites } from '../../store/favoriteSlice';
 import { RootState } from '../../store/store';
+import { setCurrentPage } from '../../store/paginationSlice';
 
 export default function TopInfos() {
   const showFavorites = useSelector(
@@ -15,6 +16,7 @@ export default function TopInfos() {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(setShowFavorites(!showFavorites));
+    dispatch(setCurrentPage(1));
   };
 
   return (
@@ -24,7 +26,7 @@ export default function TopInfos() {
         {currentCharacterLength}
         {currentCharacterLength > 1 ? ' heróis' : ' herói'}
       </CountHeroes>
-      {currentCharacterLength > 1 && (
+      {currentCharacterLength > 0 && (
         <TagContainer
           activate={showFavorites ? 'true' : 'false'}
           onClick={handleClick}

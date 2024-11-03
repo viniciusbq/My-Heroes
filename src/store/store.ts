@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import loadingReducer from './loadingSlice';
 import favoriteReducer from './favoriteSlice';
 import characterReducer from './charactersSlice';
+import paginationReducer from './paginationSlice';
 import searchReducer from './searchSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -32,6 +33,7 @@ const store = configureStore({
     favorites: persistedReducer,
     character: persistedCharacterReducer,
     search: searchReducer,
+    currentPage: paginationReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

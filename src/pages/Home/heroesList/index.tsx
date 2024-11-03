@@ -12,21 +12,25 @@ import {
 import HeroeCard from './heroeCard';
 import { RootState } from '../../../store/store';
 import { Character } from '../../../types';
+import { setCurrentPage } from '../../../store/paginationSlice';
 
 const ITEMS_PER_PAGE = 8;
 
 export default function HeroesList() {
   const [error, setError] = useState('');
-  const [currentPage, setCurrentPage] = useState<Number | String | any>(1);
 
   const dispatch = useDispatch();
+
+  const currentPage = useSelector(
+    (state: RootState) => state.currentPage.currentPage
+  );
   const favorites = useSelector(
     (state: RootState) => state.favorites.favorites
   );
   const showFavorites = useSelector(
     (state: RootState) => state.favorites.showFavorites
   );
-  const character = useSelector(
+  const characters = useSelector(
     (state: RootState) => state.character.character
   );
   const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
@@ -49,10 +53,10 @@ export default function HeroesList() {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   }, [searchTerm]);
 
-  const filteredCharacters = character.filter((char: Character) =>
+  const filteredCharacters = characters.filter((char: Character) =>
     char.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   const displayCharacters = !showFavorites ? filteredCharacters : favorites;
@@ -65,10 +69,8 @@ export default function HeroesList() {
   );
 
   useEffect(() => {
-    if (currentCharacters) {
-      dispatch(setCurrentCharactersLength(displayCharacters));
-    }
-  }, [currentCharacters, dispatch]);
+    dispatch(setCurrentCharactersLength(displayCharacters));
+  }, [displayCharacters, dispatch]);
 
   const getPaginationNumbers = () => {
     const numbers = [];
@@ -132,9 +134,7 @@ export default function HeroesList() {
       </Container>
       <PaginationContainer>
         <PaginationButton
-          onClick={() =>
-            setCurrentPage((prev: Number) => Math.max(Number(prev) - 1, 1))
-          }
+          onClick={() => dispatch(setCurrentPage(Math.max(currentPage - 1, 1)))}
           disabled={currentPage === 1}
         >
           <FaAngleLeft />
@@ -143,19 +143,21 @@ export default function HeroesList() {
         {paginationNumbers.map((page, index) => (
           <PaginationButton
             key={index}
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
+            onClick={() =>
+              typeof page === 'number' && dispatch(setCurrentPage(page))
+            }
             disabled={currentPage === page || page === '...'}
             style={{
               backgroundColor: '#fff',
               color: '#000',
               border:
-                currentPage === page && page !== '...'
+                currentPage === page && page.toString() !== '...'
                   ? '1px solid #ff0000'
                   : page === '...'
                   ? 'none'
                   : '1px solid #ffffff',
               boxShadow:
-                currentPage === page && page !== '...'
+                currentPage === page && page.toString() !== '...'
                   ? '1px 1px 5px rgba(255, 255, 255, 0.5)'
                   : page === '...'
                   ? 'none'
@@ -168,9 +170,7 @@ export default function HeroesList() {
 
         <PaginationButton
           onClick={() =>
-            setCurrentPage((prev: Number) =>
-              Math.min(Number(prev) + 1, totalPages)
-            )
+            dispatch(setCurrentPage(Math.min(currentPage + 1, totalPages)))
           }
           disabled={currentPage === totalPages}
         >

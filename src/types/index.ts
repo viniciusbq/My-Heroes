@@ -45,6 +45,9 @@ export interface CharacterState {
   currentCharacterLength: number;
   selectedCharacter: Character | null;
 }
+export interface PaginationState {
+  currentPage: number;
+}
 
 export interface FavoritesState {
   favorites: Character[];
