@@ -1,10 +1,14 @@
 import styled from 'styled-components';
+import background from '../../assets/wallpaper.webp';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center;
 `;
 
 export const BackButton = styled.button`
@@ -24,13 +28,6 @@ export const BackButton = styled.button`
   &:hover {
     background-color: rgba(255, 255, 255, 1);
   }
-`;
-
-export const ImgBackground = styled.img`
-  height: auto;
-  width: 100vw;
-  position: absolute;
-  z-index: -1;
 `;
 
 export const TitleContainer = styled.div`

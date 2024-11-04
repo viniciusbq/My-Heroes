@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-color: #202020;
   position: relative;
   flex-wrap: wrap;
+  bottom: 0px;
 `;
 
 export const DataText = styled.span`

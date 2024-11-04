@@ -1,13 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import {
-  BackButton,
-  Container,
-  ImgBackground,
-  Title,
-  TitleContainer,
-} from './styles';
-import backgroung from '../../assets/wallpaper.webp';
+import { BackButton, Container, Title, TitleContainer } from './styles';
 import HeroeDeitalCard from './components/heroeDetailCard';
 import ComicsDetails from './components/comics';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -22,7 +15,6 @@ export default function HeroesDetails() {
 
   return (
     <Container>
-      <ImgBackground src={backgroung} />
       <BackButton onClick={() => navigate('/')}>
         <IoMdArrowRoundBack size={40} color="red" />
       </BackButton>
