@@ -6,18 +6,18 @@ import {
   PaginationButton,
   NoCharacter,
 } from './styles';
-import { fetchMarvelCharacters } from '../../../services/marvelApi';
+import { fetchMarvelCharacters } from '../../services/marvelApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoading } from '../../../store/loadingSlice';
-import { addFavorite, removeFavorite } from '../../../store/favoriteSlice';
+import { setLoading } from '../../store/loadingSlice';
+import { addFavorite, removeFavorite } from '../../store/favoriteSlice';
 import {
   setCharacters,
   setCurrentCharactersLength,
-} from '../../../store/charactersSlice';
-import HeroeCard from './heroeCard';
-import { RootState } from '../../../store/store';
-import { Character } from '../../../types';
-import { setCurrentPage } from '../../../store/paginationSlice';
+} from '../../store/charactersSlice';
+import HeroeCard from '../heroeCard';
+import { RootState } from '../../store/store';
+import { Character } from '../../types';
+import { setCurrentPage } from '../../store/paginationSlice';
 
 const ITEMS_PER_PAGE = 8;
 

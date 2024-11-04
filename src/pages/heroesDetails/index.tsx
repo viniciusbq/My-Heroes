@@ -8,8 +8,8 @@ import {
   TitleContainer,
 } from './styles';
 import backgroung from '../../assets/wallpaper.webp';
-import HeroeDeitalCard from './components/heroeDetailCard';
-import ComicsDetails from './components/comics';
+import HeroeDeitalCard from '../../components/heroeDetailCard';
+import ComicsDetails from '../../components/comics';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

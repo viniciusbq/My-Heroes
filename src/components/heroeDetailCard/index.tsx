@@ -1,5 +1,5 @@
-import { IHeroeDetailCardProps } from '../../../../types';
-import { truncateDescription } from '../../../../utils/trunkDescription';
+import { IHeroeDetailCardProps } from '../../types';
+import { truncateDescription } from '../../utils/trunkDescription';
 import {
   Container,
   Description,

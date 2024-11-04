@@ -1,4 +1,4 @@
-import SearchBar from './components/searchBar';
+import SearchBar from '../searchBar';
 import { Container, Content, Subtitle, Title } from './styles';
 
 export default function Header() {

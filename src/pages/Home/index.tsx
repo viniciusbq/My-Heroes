@@ -1,8 +1,8 @@
-import { Container } from './styles';
 import Header from '../../components/header';
 import TopInfos from '../../components/topInfos';
-import HeroesList from './heroesList';
+import HeroesList from '../../components/heroesList';
 import { useEffect } from 'react';
+import { Container } from './styles';
 
 export default function Home() {
   useEffect(() => {

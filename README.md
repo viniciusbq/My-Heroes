@@ -16,24 +16,24 @@ My Heroes é uma Single Page Application (SPA) desenvolvida com React que consom
 
 - Listagem de heróis da Marvel com paginação.
 <div align="center">
-<img src="./src/assets/prints/Home.png" alt="Página Inicial do My Heroes" width="500"/>
+<img src="./src/assets/prints/home.png" alt="Página Inicial do My Heroes" width="500"/>
 </div>
 - Exibição de detalhes de cada herói, incluindo nome, descrição e quadrinhos relacionados.
 <div align="center">
 
-<img src="./src/assets/prints/Detalhes.png" alt="Página Inicial do My Heroes" width="500"/>
+<img src="./src/assets/prints/characterDetails.png" alt="Página Inicial do My Heroes" width="500"/>
 </div>
 
 - Possibilidade de adicionar e remover heróis dos favoritos.
 <div align="center">
 
-<img src="./src/assets/prints/Favoritos.png" alt="Página Inicial do My Heroes" width="500"/>
+<img src="./src/assets/prints/favorites.png" alt="Página Inicial do My Heroes" width="500"/>
 </div>
 
 - Persistência dos favoritos, mesmo após o fechamento da aplicação.
 <div align="center">
 
-<img src="./src/assets/prints/Persistir.png" alt="Página Inicial do My Heroes" width="500"/>
+<img src="./src/assets/prints/persist.png" alt="Página Inicial do My Heroes" width="500"/>
 </div>
 
 ## Pré-requisitos

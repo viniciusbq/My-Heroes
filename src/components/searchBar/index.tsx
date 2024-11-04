@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { IconContainer, SearchContainer, SearchInput } from './styles';
 import { FaSearch } from 'react-icons/fa';
-import { setSearchTerm } from '../../../../store/searchSlice';
+import { setSearchTerm } from '../../store/searchSlice';
 
 const SearchBar = () => {
   const [searchTerm, setSearchTermLocal] = useState('');
