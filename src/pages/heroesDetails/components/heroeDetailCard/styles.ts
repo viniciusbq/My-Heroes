@@ -2,21 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  height: 21.1881rem;
-  justify-content: center;
+  min-height: 22rem;
   align-items: center;
   margin-top: 12.4375rem;
   background-color: #fff;
   border-radius: 50px;
   box-shadow: 10px 20px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  transition: transform 0.6s, box-shadow 0.6s;
   padding: 10px 0px;
   width: 60%;
 
-  @media (max-width: 1070px) {
+  @media (max-width: 1079px) {
     flex-wrap: wrap;
+    justify-content: center;
     height: auto;
+    width: 90%;
   }
   @media (max-width: 500px) {
     margin-top: 9rem;
@@ -27,10 +27,11 @@ export const Container = styled.div`
 `;
 
 export const Thumb = styled.img`
-  width: 12.5rem;
+  max-width: 18rem;
   border-radius: 50%;
-  height: auto;
   margin: 0px 2rem;
+  position: relative;
+  left: 0px;
   @media (max-width: 500px) {
     width: 8rem;
   }
