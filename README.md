@@ -16,7 +16,7 @@ My Heroes é uma Single Page Application (SPA) desenvolvida com React que consom
 
 - Listagem de heróis da Marvel com paginação.
 <div align="center">
-<img src="./src/assets/prints/home.png" alt="Página Inicial do My Heroes" width="500"/>
+<img src="./src/assets/prints/homePage.png" alt="Página Inicial do My Heroes" width="500"/>
 </div>
 - Exibição de detalhes de cada herói, incluindo nome, descrição e quadrinhos relacionados.
 <div align="center">
